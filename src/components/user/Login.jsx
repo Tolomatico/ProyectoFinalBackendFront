@@ -1,17 +1,15 @@
 import { useContext, useState } from "react"
-import clienteAxios from "../../utils/axiosClient"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import Swal from "sweetalert2"
 import { userContext } from "../context/userContext"
+import fetchData from "../../utils/fetchData"
 
 export function Login() {
     const [auth, setAuth] = useContext(userContext)
     const navigate = useNavigate()
-
     const [user, setUser] = useState({ email: "", password: "" })
     const [error, setError] = useState("")
-
-
+   
     const handleForm = (e) => {
         e.preventDefault()
 
@@ -26,13 +24,11 @@ export function Login() {
         if (!user.email || !user.password) return setError("LLena todos los campos para continuar")
             
             try {
-            const response = await clienteAxios.post(`/api/users/login`, user,{
+            const response = await fetchData.post(`/api/users/login`, user,{
+                token:`token`,
                 withCredentials:true
             })
-          
-            console.log(response.data)
-                
-          
+     
             if (response.data.error) {
                 setError("")
                 setError(response.data.error)
@@ -42,10 +38,12 @@ export function Login() {
                     'Has iniciado sesión correctamente',
                     'success'
                 )
-                setAuth({auth:true})
+                
+                setAuth({auth:true,
+                    user:response.data.user})
                navigate("/profile")
-            
-            }
+               
+            }   
 
         } catch (error) {
 
@@ -67,7 +65,7 @@ export function Login() {
                     <label className="block text-sm uppercase text-gray-500 mb-2 font-bold">Ingrese su email</label>
                     <input
                         onChange={handleForm}
-                        className="w-full px-3 py-2 border border-gray-300 border rounded-md placeholder-gray-400" type="mail"
+                        className="w-full px-3 py-2  border-gray-300 border rounded-md placeholder-gray-400" type="mail"
                         placeholder="email"
                         name="email"
                         required />
@@ -75,7 +73,7 @@ export function Login() {
 
                     <input
                         onChange={handleForm}
-                        className="w-full px-3 py-2 border border-gray-300 border rounded-md placeholder-gray-400"
+                        className="w-full px-3 py-2  border-gray-300 border rounded-md placeholder-gray-400"
                         type="password"
                         placeholder="password"
                         name="password"
@@ -91,6 +89,11 @@ export function Login() {
                             (null)
                     }
                 </form>
+
+                <div className="flex justify-between my-5">
+            <Link className="text-gray-500 font-bold text-xs" to="/register">No estas registrado? Registrate aquí</Link>
+            <Link className="text-gray-500 font-bold text-xs" to="/passrecover">Olvidé mi contraseña</Link>
+        </div>
 
             </div>
         </div>
