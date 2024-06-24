@@ -11,6 +11,7 @@ import { PassRecover } from "./components/user/PassRecover";
 import { RecoverPassword } from "./components/user/RecoverPassword";
 import { RealTimeProducts } from "./components/products/RealTimeProducts";
 import { Admin } from "./components/admin/Admin";
+import NotFound from "./utils/NotFound";
 
 
 
@@ -33,6 +34,7 @@ function App() {
           <Route path="/cart/:id" element={<Cart />} />
           <Route path="/passrecover" element={<PassRecover />} />
           <Route path="/recoverpassword" element={<RecoverPassword />} />
+          <Route path="*" element={<NotFound />} />
 
         </Routes >
       </UserProvider>
