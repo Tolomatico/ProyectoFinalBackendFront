@@ -34,7 +34,7 @@ function App() {
           <Route path="/cart/:id" element={<Cart />} />
           <Route path="/passrecover" element={<PassRecover />} />
           <Route path="/recoverpassword" element={<RecoverPassword />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="/*" element={<NotFound />} />
 
         </Routes >
       </UserProvider>
