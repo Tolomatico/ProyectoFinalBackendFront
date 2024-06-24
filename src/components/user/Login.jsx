@@ -4,7 +4,10 @@ import Swal from "sweetalert2"
 import { userContext } from "../context/userContext"
 import fetchData from "../../utils/fetchData"
 
+
 export function Login() {
+
+
     const [auth, setAuth] = useContext(userContext)
     const navigate = useNavigate()
     const [user, setUser] = useState({ email: "", password: "" })

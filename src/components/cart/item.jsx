@@ -97,7 +97,7 @@ export function Item({ item, getCart }) {
 
     return (
         <article className="space-y-3 w-50 flex-column gap-10 justify-center text-center  border-rounder-xl shadow p-2 ">
-            <img className="w-32 h-32 mx-auto" src={`http://localhost:8080/img/${item.product.thumbnail[0]}`} />
+            <img className="w-32 h-32 mx-auto" src={`${import.meta.env.VITE_API_URL}/img/${item.product.thumbnail[0]}`} />
             <p className="font-bold text-xl">{title}</p>
             <p className="font-bold text-xl">${price}</p>
 

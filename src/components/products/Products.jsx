@@ -16,7 +16,7 @@ export function Products() {
             withCredentials: true
         })
         const arrayProducts = response.data
-        const filtered = arrayProducts.filter(product => product.status && product.stock > 0)
+        const filtered = arrayProducts.filter(product => product.status=== true && product.stock > 0)
         setProducts(filtered)
 
     }
