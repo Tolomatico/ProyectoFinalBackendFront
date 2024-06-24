@@ -33,7 +33,7 @@ function App() {
           <Route path="/realtimeproducts" element={<RealTimeProducts />} />
           <Route path="/cart/:id" element={<Cart />} />
           <Route path="/passrecover" element={<PassRecover />} />
-          <Route path="/recoverpassword" element={<RecoverPassword />} />
+          <Route path="/change" element={<RecoverPassword />} />
           <Route path="/*" element={<NotFound />} />
 
         </Routes >
