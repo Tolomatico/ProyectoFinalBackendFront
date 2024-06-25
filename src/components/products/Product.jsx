@@ -27,8 +27,7 @@ export function Product({ product }) {
             const response = await fetchData.post(`/api/carts/${auth.user.cart}/product/${id}`,{}, {
                 withCredentials: true
             })
-            console.log(response.status);
-            console.log(response.data);
+           
 
        
 

@@ -17,6 +17,7 @@ export function Admin() {
     }
 
     const deleteUser = async (id) => {
+      
         await fetchData.delete(`/api/users/${id}`)
         getUsers()
     }
@@ -26,12 +27,12 @@ export function Admin() {
         const expiredDate = new Date(actualDate.getTime() - 5 * 60 * 1000) // Borra a los 5 minutos
 
         const usersLastConnections = users.filter(user => new Date(user.last_connection) < expiredDate)
-        console.log(usersLastConnections)
-         for (let i = 0; i < usersLastConnections.length; i++) {
+   
+        for (let i = 0; i < usersLastConnections.length; i++) {
 
-             await deleteUser(usersLastConnections._id)
+            await deleteUser(usersLastConnections[i]._id)
 
-         }
+        }
 
     }
 
